@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tool & Mold Making | KongDe Science & Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#273577;--navy-dark:#1a2558;--navy-deeper:#111a42;--navy-light:#3244a0;
+  --accent:#3b55c4;--page-bg:#fff;--section-alt:#f4f6fb;--section-mid:#edf0f8;
+  --text-primary:#111827;--text-secondary:#374151;--text-muted:#6b7280;--text-light:#9ca3af;
+  --border:rgba(39,53,119,.12);--border-mid:rgba(39,53,119,.2);
+  --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--page-bg);color:var(--text-primary);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;box-shadow:0 1px 12px rgba(39,53,119,.07)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:40px}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;letter-spacing:.04em;text-decoration:none;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-cta{background:var(--navy);color:#fff;border:none;padding:9px 22px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s;cursor:pointer}
+.nav-cta:hover{background:var(--navy-light)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:var(--section-alt);padding:14px 60px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);letter-spacing:.04em;margin-top:68px}
+.breadcrumb a{color:var(--text-muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--navy)}
+.breadcrumb .sep{color:var(--border-mid)}
+.breadcrumb .current{color:var(--navy);font-weight:500}
+
+/* ── HERO ── */
+.hero{min-height:90vh;background:linear-gradient(to bottom,rgba(17,26,66,.75) 0%,rgba(17,26,66,.9) 60%,var(--navy-deeper) 100%),url('https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;display:flex;align-items:center;padding:100px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(39,53,119,.3) 0%,transparent 60%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:850px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#a8c4ff;margin-bottom:28px}
+.hero-eyebrow::before{content:'';width:36px;height:2px;background:#a8c4ff}
+.hero h1{font-family:var(--font-display);font-size:clamp(52px,6.5vw,84px);font-weight:700;line-height:.95;letter-spacing:-.01em;text-transform:uppercase;color:#fff;margin-bottom:28px}
+.hero h1 span{color:#a8c4ff;display:block}
+.hero-desc{font-size:18px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.85);max-width:640px;margin-bottom:48px}
+
+/* ── SECTIONS ── */
+section{padding:120px 60px}
+.section-eyebrow{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.section-eyebrow::before{content:'';width:24px;height:2px;background:var(--navy)}
+.section-title{font-family:var(--font-display);font-size:clamp(36px,4.5vw,54px);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.05;color:var(--text-primary);margin-bottom:18px}
+.section-subtitle{font-size:16px;font-weight:300;color:var(--text-muted);line-height:1.75;max-width:680px}
+
+/* ── CAPABILITIES & INSERTS GALLERY ── */
+.capabilities{background:var(--page-bg);padding-bottom:120px}
+.cap-header{margin-bottom:64px}
+.cap-grid-new{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;margin-top:48px;margin-bottom:80px}
+.cap-card-new{background:var(--section-alt);border:1px solid var(--border);padding:44px 36px;position:relative;overflow:hidden;transition:all .35s ease;display:flex;flex-direction:column;justify-content:space-between}
+.cap-card-new::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:transparent;transition:background .3s}
+.cap-card-new:hover{background:#fff;transform:translateY(-8px);box-shadow:0 16px 40px rgba(39,53,119,.08);border-color:var(--navy-light)}
+.cap-card-new:hover::before{background:var(--navy)}
+.cap-card-num{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);opacity:0.4;margin-bottom:24px;display:block}
+.cap-card-title{font-family:var(--font-display);font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--text-primary);margin-bottom:16px}
+.cap-card-desc{font-size:14px;font-weight:300;color:var(--text-secondary);line-height:1.75;margin-bottom:24px;flex-grow:1}
+.cap-card-features{list-style:none;padding-top:18px;border-top:1px solid var(--border)}
+.cap-card-features li{font-size:13px;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.cap-card-features li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--navy)}
+
+/* Precision 7-Column Gallery */
+.inserts-gallery-section{border-top:1px solid var(--border);padding-top:80px}
+.gallery-title{font-family:var(--font-display);font-size:22px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:12px;letter-spacing:0.02em}
+.gallery-subtitle{font-size:14px;font-weight:300;color:var(--text-muted);margin-bottom:36px}
+.inserts-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:16px}
+.insert-thumb-card{background:#fff;border:1px solid var(--border);padding:12px;text-align:center;transition:all .3s ease;border-radius:2px}
+.insert-thumb-card:hover{border-color:var(--navy);transform:translateY(-4px);box-shadow:0 12px 24px rgba(39,53,119,.06)}
+.insert-thumb-card img{width:100%;height:130px;object-fit:contain;background:#f9fafb;margin-bottom:10px}
+.insert-name{font-family:var(--font-display);font-size:12px;font-weight:600;color:var(--text-primary);text-transform:uppercase}
+
+/* ── ENGINEERING & DESIGN ── */
+.engineering{background:var(--section-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.eng-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center}
+.eng-info-side .intro-text{font-size:15px;line-height:1.8;color:var(--text-secondary);font-weight:300;margin-bottom:36px}
+.eng-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.eng-feat-card{background:#fff;border:1px solid var(--border);padding:24px}
+.eng-feat-title{font-family:var(--font-display);font-size:16px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:8px}
+.eng-feat-desc{font-size:13px;color:var(--text-muted);line-height:1.6}
+.eng-image-side img{width:100%;height:auto;border:1px solid var(--border);box-shadow:0 20px 40px rgba(0,0,0,0.04)}
+
+/* ── EQUIPMENT & REAL WORKSHOP IMAGES ── */
+.equipment{background:var(--page-bg)}
+.eq-layout-grid{display:grid;grid-template-columns:1.24fr 1fr;gap:48px;margin-top:56px}
+.eq-cards-side{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.eq-card-new{background:var(--section-alt);border:1px solid var(--border);padding:32px 24px;transition:all .3s}
+.eq-card-new:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.eq-card-new:hover .eq-title-new{color:#fff}
+.eq-card-new:hover .eq-desc-new{color:rgba(255,255,255,0.8)}
+.eq-title-new{font-family:var(--font-display);font-size:18px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:12px}
+.eq-desc-new{font-size:13px;color:var(--text-muted);line-height:1.65}
+
+/* Real Workshop Processing Showcase Panel */
+.workshop-showcase-side{display:flex;flex-direction:column;gap:24px}
+.workshop-img-box{background:#fff;border:1px solid var(--border);padding:14px;box-shadow:0 8px 24px rgba(0,0,0,0.02);border-radius:2px}
+.workshop-img-box img{width:100%;height:240px;object-fit:cover;margin-bottom:14px;background:#f9fafb}
+.workshop-img-caption{font-family:var(--font-display);font-size:15px;font-weight:700;text-transform:uppercase;color:var(--navy);margin-bottom:4px}
+.workshop-img-desc{font-size:12px;color:var(--text-muted);line-height:1.5}
+
+/* ── MATERIALS ── */
+.materials{background:var(--section-alt)}
+.mat-layout{display:grid;grid-template-columns:280px 1fr;gap:0;margin-top:64px;border:1px solid var(--border)}
+.mat-tabs{border-right:1px solid var(--border);background:#fff}
+.mat-tab{padding:20px 28px;cursor:pointer;border-bottom:1px solid var(--border);transition:all .2s;display:flex;align-items:center;gap:14px}
+.mat-tab.active{background:var(--section-alt);font-weight:600;border-left:3px solid var(--navy)}
+.mat-panel{display:none;padding:44px 48px;background:#fff}
+.mat-panel.active{display:block}
+.mat-panel-title{font-family:var(--font-display);font-size:24px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:12px}
+.mat-panel-desc{font-size:14px;font-weight:300;color:var(--text-muted);line-height:1.8;margin-bottom:24px}
+.mat-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.mat-tag{font-size:12px;color:var(--navy);background:var(--section-alt);border:1px solid var(--border-mid);padding:6px 14px}
+.mat-props{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mat-prop{background:var(--section-alt);border:1px solid var(--border);padding:14px 16px}
+.mat-prop-key{font-size:10px;text-transform:uppercase;color:var(--text-light);margin-bottom:4px}
+.mat-prop-val{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy)}
+
+/* ── APPLICATIONS ── */
+.applications{background:var(--navy);color:#fff}
+.apps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px}
+.app-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:40px 28px;transition:all .3s}
+.app-card:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+.app-icon-wrap{width:50px;height:50px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.app-icon-wrap svg{width:26px;height:26px;stroke:#a8c4ff;fill:none}
+.app-card-name{font-family:var(--font-display);font-size:18px;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.app-card-desc{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65}
+
+/* ── CTA FORM ── */
+.cta-section{background:var(--section-mid)}
+.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.cta-form{background:#fff;padding:40px;border:1px solid var(--border)}
+.form-title{font-family:var(--font-display);font-size:24px;font-weight:700;text-transform:uppercase;margin-bottom:16px}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.form-row input,.form-row textarea,.form-row select{width:100%;background:var(--section-alt);border:1px solid var(--border-mid);padding:12px;font-size:14px;outline:none}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{width:100%;background:var(--navy);color:#fff;border:none;padding:14px;font-weight:700;text-transform:uppercase;cursor:pointer}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deeper);padding:60px 60px 36px;color:rgba(255,255,255,.6)}
+.footer-top{display:grid;grid-template-columns:280px 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 40px auto}
+.footer-col h4{font-family:var(--font-display);font-size:12px;color:#fff;text-transform:uppercase;margin-bottom:16px;letter-spacing:0.1em}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px;font-size:13px}
+.footer-col ul li a{color:rgba(255,255,255,.5);text-decoration:none}
+.footer-col ul li a:hover{color:#fff}
+
+@media(max-width:1100px){
+  .cap-grid-new, .eq-layout-grid, .apps-grid, .eng-layout, .mat-layout{grid-template-columns:1fr}
+  .inserts-grid{grid-template-columns:repeat(4,1fr)}
+  .cta-inner{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .inserts-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#"><img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/></a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#" class="active">Capabilities</a>
+    <a href="#">Products</a>
+    <a href="#">About Us</a>
+    <a href="#">News</a>
+    <a href="#">Contact</a>
+  </div>
+  <a href="#quote" class="nav-cta">Get a Quote</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="#">Home</a><span class="sep">›</span>
+  <a href="#">Capabilities</a><span class="sep">›</span>
+  <span class="current">Tool & Mold Making</span>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">High-Precision Custom Tooling</div>
+    <h1>TOOL & MOLD MAKING<span>PRECISION ENGINEERING.</span></h1>
+    <p class="hero-desc">Reliable tooling partner for precision stamping and injection molding, supporting global engineering projects from prototype validation up to high-volume mass production runs.</p>
+  </div>
+</section>
+
+<section class="capabilities">
+  <div class="cap-header">
+    <div class="section-eyebrow">Core Capabilities</div>
+    <h2 class="section-title">Comprehensive Tooling Solutions</h2>
+    <p class="section-subtitle">We build premium-grade structures optimized for heavy continuous cycles, high material flow stability, and microscopic tolerance thresholds.</p>
+  </div>
+
+  <div class="cap-grid-new">
+    <div class="cap-card-new">
+      <div>
+        <span class="cap-card-num">01 / STAMPING SOLUTIONS</span>
+        <h3 class="cap-card-title">Progressive Stamping Dies</h3>
+        <p class="cap-card-desc">Engineered for high-speed, multi-station synchronization capable of handling complex forming profiles with strict flatness control.</p>
+      </div>
+      <ul class="cap-card-features">
+        <li>High-speed operation structural design</li>
+        <li>Multi-station synchronization alignment</li>
+        <li>Premium tool-steel insert integrations</li>
+      </ul>
+    </div>
+
+    <div class="cap-card-new">
+      <div>
+        <span class="cap-card-num">02 / INJECTION TOOLING</span>
+        <h3 class="cap-card-title">Injection Molds</h3>
+        <p class="cap-card-desc">From single-cavity bridge validation tools to highly complex, multi-cavity hot runner configurations built for long-term consistency.</p>
+      </div>
+      <ul class="cap-card-features">
+        <li>Single to multi-cavity core blocks</li>
+        <li>Hot & cold runner system integration</li>
+        <li>Interchangeable component architectures</li>
+      </ul>
+    </div>
+
+    <div class="cap-card-new">
+      <div>
+        <span class="cap-card-num">03 / FORMING TECHNOLOGY</span>
+        <h3 class="cap-card-title">Deep Drawing Dies</h3>
+        <p class="cap-card-desc">Advanced drawing matrices designed to withstand high pressure limits and eliminate material thinning or cosmetic defects.</p>
+      </div>
+      <ul class="cap-card-features">
+        <li>Material flow predictive engineering</li>
+        <li>Wrinkle and fracture prevention matrix</li>
+        <li>Calibrated pressure pad configurations</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="inserts-gallery-section">
+    <h3 class="gallery-title">High-Precision Tooling Spare Parts & Inserts Gallery</h3>
+    <p class="gallery-subtitle">Direct workshop photo documentation showcasing our custom micro-machined punches, cores, sliders, and critical wear inserts.</p>
+    
+    <div class="inserts-grid">
+      <div class="insert-thumb-card">
+        <img src="M-1.jpg" alt="Tooling Insert M-1"/>
+        <div class="insert-name">Insert M-1</div>
+      </div>
+      <div class="insert-thumb-card">
+        <img src="M-2.jpg" alt="Tooling Insert M-2"/>
+        <div class="insert-name">Insert M-2</div>
+      </div>
+      <div class="insert-thumb-card">
+        <img src="M-3.jpg" alt="Tooling Insert M-3"/>
+        <div class="insert-name">Insert M-3</div>
+      </div>
+      <div class="insert-thumb-card">
+        <img src="M-10.jpg" alt="Tooling Insert M-10"/>
+        <div class="insert-name">Insert M-10</div>
+      </div>
+      <div class="insert-thumb-card">
+        <img src="M-11.jpg" alt="Tooling Insert M-11"/>
+        <div class="insert-name">Insert M-11</div>
+      </div>
+      <div class="insert-thumb-card">
+        <img src="M-12.jpg" alt="Tooling Insert M-12"/>
+        <div class="insert-name">Insert M-12</div>
+      </div>
+      <div class="insert-thumb-card">
+        <img src="Tooling insert.jpg" alt="Tooling Insert Primary"/>
+        <div class="insert-name">Core Piece</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="engineering">
+  <div class="eng-layout">
+    <div class="eng-info-side">
+      <div class="section-eyebrow">Engineering Excellence</div>
+      <h2 class="section-title">Design For Manufacturability</h2>
+      <p class="intro-text">Early engineering support ensures proper runner configurations, venting locations, and robust parting lines to prevent flash and dimensional variation.</p>
+      <div class="eng-features-grid">
+        <div class="eng-feat-card">
+          <h4 class="eng-feat-title">DFM Optimization</h4>
+          <p class="eng-feat-desc">Pre-emptive component optimization for smooth structural processing layouts.</p>
+        </div>
+        <div class="eng-feat-card">
+          <h4 class="eng-feat-title">Mold Flow Simulation</h4>
+          <p class="eng-feat-desc">Predictive filling, packing, and warpage analysis to eliminate molding stress.</p>
+        </div>
+      </div>
+    </div>
+    <div class="eng-image-side">
+      <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800" alt="Tool structure engineering design"/>
+    </div>
+  </div>
+</section>
+
+<section class="equipment">
+  <div class="cap-header">
+    <div class="section-eyebrow">Advanced Facility</div>
+    <h2 class="section-title">Precision Manufacturing Equipment</h2>
+    <p class="section-subtitle">We achieve microns-level repeating accuracy by utilizing premium multi-axis centers, continuous wire EDM discharge cutting, and optical profile grinding rigs.</p>
+  </div>
+
+  <div class="eq-layout-grid">
+    <div class="eq-cards-side">
+      <div class="eq-card-new">
+        <h3 class="eq-title-new">CNC Machining Centers</h3>
+        <p class="eq-desc-new">High-speed milling units for rapid roughing and fine dimension finishing of heavy core plates and mold frames.</p>
+      </div>
+      <div class="eq-card-new">
+        <h3 class="eq-title-new">Wire & Sinker EDM</h3>
+        <p class="eq-desc-new">Extreme narrow slotting, micro-pin profiles, and sharp internal angles achieved via precise electrical wire discharge erosion.</p>
+      </div>
+      <div class="eq-card-new">
+        <h3 class="eq-title-new">Grinding & Polishing</h3>
+        <p class="eq-desc-new">High-flatness surface grinding and manual optical mirror polishing to support high-aesthetic requirements.</p>
+      </div>
+      <div class="eq-card-new">
+        <h3 class="eq-title-new">Tryout & Validation</h3>
+        <p class="eq-desc-new">In-house hydraulic presses and injection machinery ensuring proper first article verification and sample sign-off.</p>
+      </div>
+    </div>
+
+    <div class="workshop-showcase-side">
+      <div class="workshop-img-box">
+        <img src="tool making01.jpg" alt="KongDe Machining Production Process 01"/>
+        <div class="workshop-img-caption">Precision Tool Machining & Setup</div>
+        <div class="workshop-img-desc">Real-time workshop view capturing precision adjustments and close-up profiling of high-grade hardened core blocks.</div>
+      </div>
+      <div class="workshop-img-box">
+        <img src="tool making02.jpg" alt="KongDe Machining Production Process 02"/>
+        <div class="workshop-img-caption">Multi-Axis Alignment & Processing</div>
+        <div class="workshop-img-desc">Advanced finishing setup executing micro-grooves and structural details with ultra-tight tolerance standards.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="materials">
+  <div class="section-eyebrow">Material Science</div>
+  <h2 class="section-title">Optimized Steel & Alloys</h2>
+  <div class="mat-layout">
+    <div class="mat-tabs">
+      <div class="mat-tab active">Premium Tool Steels</div>
+    </div>
+    <div class="mat-panel active">
+      <h3 class="mat-panel-title">Standardized & Custom Tool Steels</h3>
+      <p class="mat-panel-desc">Utilizing robust steel grades (such as SKD11, H13, DC53, and 1.2344) tailored exactly to performance expectations, minimizing fracturing while under high compression loads.</p>
+      <div class="mat-tags">
+        <span class="mat-tag">SKD11 / D2</span>
+        <span class="mat-tag">H13 / 1.2344</span>
+        <span class="mat-tag">DC53 Premium</span>
+      </div>
+      <div class="mat-props">
+        <div class="mat-prop"><div class="mat-prop-key">Hardness Range</div><div class="mat-prop-val">58-62 HRC</div></div>
+        <div class="mat-prop"><div class="mat-prop-key">Thermal Conduct</div><div class="mat-prop-val">Excellent</div></div>
+        <div class="mat-prop"><div class="mat-prop-key">Primary Use</div><div class="mat-prop-val">Cores & Dies</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="applications">
+  <div class="section-eyebrow" style="color: #a8c4ff;">Industry Applications</div>
+  <h2 class="section-title">Serving Critical Global Industries</h2>
+  <div class="apps-grid">
+    <div class="app-card">
+      <div class="app-icon-wrap">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M5 18h14M3 10h18M5 10l2-5h10l2 5M4 18a2 2 0 110-4 2 2 0 010 4zm16 0a2 2 0 110-4 2 2 0 010 4z"/></svg>
+      </div>
+      <h3 class="app-card-name">Automotive</h3>
+      <p class="app-card-desc">High-strength components, robust interior trim molds, and high-conductivity connector strip stampings.</p>
+    </div>
+    <div class="app-card">
+      <div class="app-icon-wrap">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 6v6l4 2"/></svg>
+      </div>
+      <h3 class="app-card-name">Medical Devices</h3>
+      <p class="app-card-desc">Cleanroom injection tooling for consumables, tight-tolerance shells, and multi-cavity syringe equipment.</p>
+    </div>
+    <div class="app-card">
+      <div class="app-icon-wrap">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M12 3v18M6 21h12M5 7h14M7 12h10M9 17h6"/></svg>
+      </div>
+      <h3 class="app-card-name">Electronics</h3>
+      <p class="app-card-desc">Ultra-precision tools for high-density connector grids, terminal strips, and micro-switch housings.</p>
+    </div>
+    <div class="app-card">
+      <div class="app-icon-wrap">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2M5 21H3m5-4h3m-3-4h3m-3-4h3"/></svg>
+      </div>
+      <h3 class="app-card-name">Industrial Hardware</h3>
+      <p class="app-card-desc">Heavy structural deep-draw modules, thick metal stamping matrix, and long-life industrial housings.</p>
+    </div>
+  </div>
+</section>
+
+<section id="quote" class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <div class="section-eyebrow">Start Your Project</div>
+      <h2 class="section-title">Accelerate Your Timeline</h2>
+      <p class="section-subtitle">Send your complex 3D CAD models (STEP/IGS) and DFM criteria to our tooling desk for a comprehensive quote inside 24 hours.</p>
+    </div>
+    <div class="cta-form">
+      <h3 class="form-title">Request a Tooling Quote</h3>
+      <form action="#" method="POST">
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Name *</label>
+            <input type="text" required />
+          </div>
+          <div class="form-row">
+            <label>Email *</label>
+            <input type="email" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Tooling Requirement</label>
+          <select>
+            <option>Progressive Stamping Dies</option>
+            <option>Injection Molds</option>
+            <option>Deep Drawing / Forming Matrix</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Specifications & Details</label>
+          <textarea></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit RFQ</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe" style="height:36px; margin-bottom:16px; filter:brightness(1.2);"/>
+      <p>High precision custom tooling, stamping dies, and robust injection engineering built for critical applications.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Capabilities</h4>
+      <ul>
+        <li><a href="#">Tool & Mold Making</a></li>
+        <li><a href="#">Injection Molding</a></li>
+        <li><a href="#">Precision Stamping</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Facility</a></li>
+        <li><a href="#">Quality Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Submit RFQ</a></li>
+        <li><a href="#">Global Support</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom" style="text-align:center; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); font-size:12px;">
+    <p>&copy; 2026 KongDe Science & Technology. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

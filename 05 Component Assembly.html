@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Component Assembly | KongDe Science & Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#273577;--navy-dark:#1a2558;--navy-deeper:#111a42;--navy-light:#3244a0;
+  --accent:#3b55c4;--page-bg:#fff;--section-alt:#f4f6fb;--section-mid:#edf0f8;
+  --text-primary:#111827;--text-secondary:#374151;--text-muted:#6b7280;--text-light:#9ca3af;
+  --border:rgba(39,53,119,.12);--border-mid:rgba(39,53,119,.2);
+  --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;
+  --success:#10b981;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--page-bg);color:var(--text-primary);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;box-shadow:0 1px 12px rgba(39,53,119,.07)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:40px}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;letter-spacing:.04em;text-decoration:none;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-cta{background:var(--navy);color:#fff;border:none;padding:9px 22px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s;cursor:pointer}
+.nav-cta:hover{background:var(--navy-light)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:var(--section-alt);padding:14px 60px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);letter-spacing:.04em;margin-top:68px}
+.breadcrumb a{color:var(--text-muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--navy)}
+.breadcrumb .sep{color:var(--border-mid)}
+.breadcrumb .current{color:var(--navy);font-weight:500}
+
+/* ── HERO ── */
+.hero{min-height:85vh;background:linear-gradient(to right, rgba(11,18,44,0.95) 30%, rgba(26,37,88,0.8) 70%, rgba(39,53,119,0.4) 100%), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;display:flex;align-items:center;padding:80px 60px;position:relative}
+.hero-content{position:relative;z-index:1;max-width:850px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a8c4ff;margin-bottom:24px}
+.hero-eyebrow::before{content:'';width:32px;height:2px;background:#a8c4ff}
+.hero h1{font-family:var(--font-display);font-size:clamp(44px,5.5vw,76px);font-weight:700;line-height:.95;letter-spacing:-.01em;text-transform:uppercase;color:#fff;margin-bottom:28px}
+.hero h1 span{color:#a8c4ff;display:block;font-size:0.65em;font-weight:500;letter-spacing:0.02em;margin-top:12px}
+.hero-desc{font-size:17px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.85);max-width:650px;margin-bottom:48px}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-primary{background:#fff;color:var(--navy);border:2px solid #fff;padding:14px 32px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;display:inline-block}
+.btn-primary:hover{background:var(--navy);color:#fff}
+.btn-secondary{background:transparent;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.4);padding:14px 32px;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;display:inline-block}
+.btn-secondary:hover{border-color:#fff;color:#fff}
+
+/* ── SECTION BASE ── */
+section{padding:100px 60px}
+.section-eyebrow{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.section-eyebrow::before{content:'';width:24px;height:2px;background:var(--navy)}
+.section-title{font-family:var(--font-display);font-size:clamp(34px,4vw,52px);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.05;color:var(--text-primary);margin-bottom:16px}
+.section-subtitle{font-size:16px;font-weight:300;color:var(--text-muted);line-height:1.7;max-width:640px}
+
+/* ════════════════════════════════════════
+   CAPABILITY — Process Flow Grid
+   ════════════════════════════════════════ */
+.assembly-cap{background:var(--page-bg)}
+.grid-3col{display:grid;grid-template-columns:repeat(3, 1fr);gap:32px;margin-top:56px}
+.process-card{background:var(--section-alt);border-top:3px solid var(--border-mid);padding:40px 32px;transition:all .3s ease;display:flex;flex-direction:column}
+.process-card:hover{background:#fff;transform:translateY(-8px);box-shadow:0 16px 32px rgba(39,53,119,.08);border-top-color:var(--navy)}
+.process-num{font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--navy);opacity:0.15;line-height:1;margin-bottom:16px}
+.process-title{font-family:var(--font-display);font-size:22px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:16px;letter-spacing:0.02em}
+.process-desc{font-size:14px;color:var(--text-secondary);line-height:1.7;font-weight:300;margin-bottom:24px;flex-grow:1}
+.process-bullets{list-style:none;border-top:1px solid var(--border);padding-top:20px}
+.process-bullets li{font-size:13px;color:var(--text-muted);margin-bottom:10px;display:flex;align-items:start;gap:10px}
+.process-bullets li svg{width:14px;height:14px;color:var(--navy);margin-top:2px;flex-shrink:0}
+
+/* ════════════════════════════════════════
+   AUTOMATION INTEGRATION — Split Tech View
+   ════════════════════════════════════════ */
+.automation{background:var(--section-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.auto-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center}
+.auto-info .intro-text{font-size:16px;line-height:1.8;color:var(--text-secondary);font-weight:300;margin-bottom:36px}
+.tech-row{background:#fff;border:1px solid var(--border);padding:24px;margin-bottom:16px;display:flex;gap:20px;transition:all .3s}
+.tech-row:hover{border-color:var(--navy);box-shadow:0 8px 20px rgba(39,53,119,0.04);transform:translateX(4px)}
+.tech-icon{width:44px;height:44px;background:var(--section-mid);display:flex;align-items:center;justify-content:center;color:var(--navy);flex-shrink:0}
+.tech-title{font-family:var(--font-display);font-size:16px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:6px}
+.tech-desc{font-size:13px;color:var(--text-muted);line-height:1.6}
+
+/* Visual Collage Asset */
+.image-collage{display:grid;grid-template-columns:repeat(12, 1fr);grid-template-rows:repeat(12, 1fr);height:540px;position:relative}
+.collage-img-1{grid-column:1 / 9;grid-row:1 / 10;z-index:2;border:1px solid var(--border);box-shadow:0 12px 36px rgba(0,0,0,0.08);background:#ddd;overflow:hidden}
+.collage-img-2{grid-column:5 / 13;grid-row:5 / 13;z-index:1;border:1px solid var(--border);box-shadow:0 12px 36px rgba(0,0,0,0.1);background:#eee;overflow:hidden}
+.image-collage img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.image-collage :hover img{transform:scale(1.03)}
+.img-label{position:absolute;bottom:16px;left:16px;background:rgba(17,24,39,0.85);backdrop-filter:blur(4px);color:#fff;padding:6px 14px;font-family:var(--font-display);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;z-index:3}
+
+/* ════════════════════════════════════════
+   QUALITY & TESTING — Performance Metrics
+   ════════════════════════════════════════ */
+.quality{background:var(--navy-deeper);color:#fff;position:relative;overflow:hidden}
+.quality::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%, rgba(59,85,196,0.15) 0%, transparent 50%)}
+.quality .section-eyebrow{color:#a8c4ff}
+.quality .section-eyebrow::before{background:#a8c4ff}
+.quality .section-title{color:#fff}
+.quality .section-subtitle{color:rgba(255,255,255,0.6);margin-bottom:56px}
+.qa-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+.qa-text-side{font-size:16px;line-height:1.8;color:rgba(255,255,255,0.8);font-weight:300}
+.qa-text-side p{margin-bottom:24px}
+.qa-metrics-side{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.metric-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:32px 28px;position:relative}
+.metric-val{font-family:var(--font-display);font-size:40px;font-weight:700;color:#a8c4ff;line-height:1;margin-bottom:8px}
+.metric-name{font-family:var(--font-display);font-size:14px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.metric-bar{height:3px;background:rgba(255,255,255,0.1);position:relative}
+.metric-bar-fill{position:absolute;top:0;left:0;height:100%;background:var(--accent);width:100%}
+.metric-box:first-child .metric-bar-fill{background:var(--success);width:100%}
+
+/* ════════════════════════════════════════
+   CTA + FORM
+   ════════════════════════════════════════ */
+.cta-section{background:var(--section-mid);padding:100px 60px;position:relative;overflow:hidden;border-top:1px solid var(--border)}
+.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.cta-text .section-title{color:var(--text-primary)}
+.cta-text .section-subtitle{max-width:480px;color:var(--text-secondary);margin-bottom:32px}
+.cta-highlights{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+.cta-highlight{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-secondary);font-weight:500}
+.cta-highlight::before{content:'';width:6px;height:6px;background:var(--navy);flex-shrink:0}
+.cta-form{background:#fff;padding:40px;border:1px solid var(--border);box-shadow:0 12px 36px rgba(39,53,119,.04)}
+.form-title{font-family:var(--font-display);font-size:24px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:8px}
+.form-sub{font-size:13px;color:var(--text-muted);margin-bottom:28px}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.form-row input,.form-row textarea,.form-row select{width:100%;background:var(--section-alt);border:1px solid var(--border-mid);color:var(--text-primary);font-family:var(--font-body);font-size:14px;padding:12px 16px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:var(--navy);background:#fff}
+.form-row textarea{resize:vertical;min-height:100px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{width:100%;background:var(--navy);color:#fff;border:none;padding:15px;font-family:var(--font-body);font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px}
+.btn-submit:hover{background:var(--navy-light)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deeper);padding:60px 60px 36px;color:#fff}
+.footer-top{display:grid;grid-template-columns:280px 1fr 1fr 1fr;gap:48px;margin-bottom:52px;max-width:1200px;margin:0 auto 40px auto}
+.footer-brand img{height:36px;filter:brightness(1.15);margin-bottom:20px}
+.footer-brand p{font-size:13px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.8}
+.footer-col h4{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-col ul{list-style:none}
+.footer-col ul li+li{margin-top:10px}
+.footer-col ul li a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-col ul li a:hover{color:#a8c4ff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.35);max-width:1200px;margin:0 auto;flex-wrap:wrap;gap:12px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  nav{padding:0 30px}
+  section{padding:80px 30px}
+  .grid-3col{grid-template-columns:1fr 1fr}
+  .auto-layout,.qa-layout{grid-template-columns:1fr;gap:40px}
+  .image-collage{height:440px}
+  .cta-inner{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .grid-3col{grid-template-columns:1fr}
+  .qa-metrics-side{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#"><img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/></a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#" class="active">Capabilities</a>
+    <a href="#">Products</a>
+    <a href="#">About Us</a>
+    <a href="#">News</a>
+    <a href="#">Contact</a>
+  </div>
+  <a href="#quote" class="nav-cta">Get a Quote</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="#">Home</a><span class="sep">›</span>
+  <a href="#">Capabilities</a><span class="sep">›</span>
+  <span class="current">Component Assembly</span>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Integrated Manufacturing Solutions</div>
+    <h1>Component Assembly<span>Integrated Solutions. Consistent Performance.</span></h1>
+    <p class="hero-desc">Integrated assembly solutions ensuring consistent quality, improved efficiency, and reliable product performance across high-precision applications.</p>
+    <div class="hero-actions">
+      <a href="#quote" class="btn-primary">Request Consultation</a>
+      <a href="#capability" class="btn-secondary">View Assembly Line</a>
+    </div>
+  </div>
+</section>
+
+<section id="capability" class="assembly-cap">
+  <div class="section-eyebrow">Production Capacity</div>
+  <h2 class="section-title">Flexible Assembly Solutions</h2>
+  <p class="section-subtitle">KongDe provides integrated component assembly solutions designed to streamline production and improve overall product consistency.</p>
+
+  <div class="grid-3col">
+    <div class="process-card">
+      <div class="process-num">01</div>
+      <h3 class="process-title">Methodology</h3>
+      <p class="process-desc">By combining manual expertise with automated systems, we are able to support a wide range of assembly requirements, from simple sub-assemblies to complex multi-component products.</p>
+      <ul class="process-bullets">
+        <li>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          Manual and semi-automated assembly
+        </li>
+        <li>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          Fully automated assembly lines
+        </li>
+      </ul>
+    </div>
+
+    <div class="process-card">
+      <div class="process-num">02</div>
+      <h3 class="process-title">Integration</h3>
+      <p class="process-desc">Our team focuses on process optimization and precision control to ensure that each assembled product meets strict functional and structural quality expectations flawlessly.</p>
+      <ul class="process-bullets">
+        <li>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          Multi-component integration (metal + plastic + electronics)
+        </li>
+        <li>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          Precision joining (press-fit, fastening, bonding, etc.)
+        </li>
+      </ul>
+    </div>
+
+    <div class="process-card">
+      <div class="process-num">03</div>
+      <h3 class="process-title">Scalability</h3>
+      <p class="process-desc">With highly flexible production capabilities and adaptive engineering workflows, we successfully support both low-volume niche projects and large-scale mass manufacturing.</p>
+      <ul class="process-bullets">
+        <li>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          Functional testing and quality inspection
+        </li>
+        <li>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          Scalable outputs with reliable efficiency
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="automation">
+  <div class="auto-layout">
+    <div class="auto-info">
+      <div class="section-eyebrow">Advanced Engineering</div>
+      <h2 class="section-title">Automation Integration</h2>
+      <p class="intro-text">To enhance production efficiency and reduce variability, KongDe integrates advanced automation solutions into assembly processes. Our customized systems are designed to improve repeatability, minimize human error, and ensure consistent output quality.</p>
+      
+      <div class="tech-row">
+        <div class="tech-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6M12 3v18M6 21h12M5 7h14M7 12h10M9 17h6"></path></svg>
+        </div>
+        <div>
+          <h4 class="tech-title">Smart Systems & Vision</h4>
+          <p class="tech-desc">Custom automated assembly systems utilizing inline inspection with advanced CCD vision systems for micrometer-level precision scanning.</p>
+        </div>
+      </div>
+
+      <div class="tech-row">
+        <div class="tech-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        </div>
+        <div>
+          <h4 class="tech-title">Error-Proofing & Control</h4>
+          <p class="tech-desc">Incorporating intelligent inspection and structural Poka-Yoke processes alongside full traceability systems for unmatched quality control.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="image-collage">
+      <div class="collage-img-1">
+        <img src="Injection plant and CCD online inspection.jpg" alt="Injection plant and CCD online inspection"/>
+        <div class="img-label">Injection Plant Overview</div>
+      </div>
+      <div class="collage-img-2">
+        <img src="online CCD.png" alt="Online CCD system"/>
+        <div class="img-label">Inline CCD Vision System</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quality">
+  <div class="qa-layout">
+    <div>
+      <div class="section-eyebrow">Quality Assurance</div>
+      <h2 class="section-title">Rigorous Testing & Process Control</h2>
+      <div class="qa-text-side">
+        <p>Quality assurance is a key focus throughout our assembly operations. KongDe implements strict inspection and testing procedures to ensure that each product meets defined specifications and performance requirements.</p>
+        <p>From dimensional verification to functional testing, every stage is carefully controlled to maintain consistency, eliminate manufacturing defects, and support stable mass production runs flawlessly.</p>
+      </div>
+    </div>
+    
+    <div class="qa-metrics-side">
+      <div class="metric-box">
+        <div class="metric-val">100%</div>
+        <div class="metric-name">Critical Components Inspection</div>
+        <div class="metric-bar"><div class="metric-bar-fill"></div></div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">Full</div>
+        <div class="metric-name">Electrical & Functional Testing</div>
+        <div class="metric-bar"><div class="metric-bar-fill"></div></div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">Continuous</div>
+        <div class="metric-name">Dimensional & Visual Inspection</div>
+        <div class="metric-bar"><div class="metric-bar-fill"></div></div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">Stable</div>
+        <div class="metric-name">Mass Production Process Control</div>
+        <div class="metric-bar"><div class="metric-bar-fill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quote" class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <div class="section-eyebrow">Start Your Project</div>
+      <h2 class="section-title">Accelerate Your Manufacturing Timeline</h2>
+      <p class="section-subtitle">Submit your technical dimensional blueprints or DFM parameters today to get a comprehensive tooling engineering evaluation from our master engineers within 24 hours.</p>
+      <div class="cta-highlights">
+        <div class="cta-highlight">Full multi-axis simulation evaluation reports</div>
+        <div class="cta-highlight">Certified global standard premium tool steels</div>
+        <div class="cta-highlight">24-hour rapid quoting turnaround support</div>
+      </div>
+    </div>
+
+    <div class="cta-form">
+      <h3 class="form-title">Request an Assembly Quote</h3>
+      <p class="form-sub">Fill out the required specifications below for a prompt response.</p>
+      <form action="#" method="POST">
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Your Name *</label>
+            <input type="text" placeholder="John Doe" required />
+          </div>
+          <div class="form-row">
+            <label>Email Address *</label>
+            <input type="email" placeholder="john@company.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Assembly Application Type</label>
+          <select>
+            <option>Automated Multi-Component Integration</option>
+            <option>Manual & Semi-Automated Assembly</option>
+            <option>Precision Joining / Press-fitting</option>
+            <option>With Custom CCD Vision Inspection</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Project Details / Material Requirements</label>
+          <textarea placeholder="Describe dimensions, parts integration details, testing criteria..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit RFQ Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/>
+      <p>Mastering precision toolmaking and advanced injection engineering across demanding sectors worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Capabilities</h4>
+      <ul>
+        <li><a href="#">Tool & Mold Making</a></li>
+        <li><a href="#">Injection Molding</a></li>
+        <li><a href="#">Precision Stamping</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Facility</a></li>
+        <li><a href="#">Quality Assurance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Inquiries & Sales</a></li>
+        <li><a href="#">Technical Support</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 KongDe Science & Technology. All Rights Reserved.</p>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+</body>
+</html>

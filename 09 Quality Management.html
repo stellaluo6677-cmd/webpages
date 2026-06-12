@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Quality Management System | ISO Certified Manufacturing | KongDe Science & Technology</title>
+<meta name="keywords" content="quality control manufacturing, iso certified manufacturer, ppap inspection, manufacturing quality assurance, 8d report supplier"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  /* 品牌核心色彩系统 —— 与参考页面保持100%一致 */
+  --navy:#273577;--navy-dark:#1a2558;--navy-deeper:#111a42;--navy-light:#3244a0;
+  --accent:#3b55c4;--page-bg:#fff;--section-alt:#f4f6fb;--section-mid:#edf0f8;
+  --text-primary:#111827;--text-secondary:#374151;--text-muted:#6b7280;--text-light:#9ca3af;
+  --border:rgba(39,53,119,.12);--border-mid:rgba(39,53,119,.2);
+  --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);color:var(--text-secondary);background:var(--page-bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* 通用布局基础 */
+.container{max-width:1240px;margin:0 auto;padding:0 40px}
+a{text-decoration:none;color:inherit}
+
+/* Header 样式保持与原页面完全一致 */
+header{background:var(--page-bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;height:80px}
+.header-inner{display:flex;justify-content:space-between;align-items:center;height:100%}
+.logo-area img{height:38px;display:block}
+nav ul{display:flex;list-style:none;gap:35px}
+nav a{font-family:var(--font-display);font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--text-primary);transition:color .3s}
+nav a:hover,nav a.active{color:var(--accent)}
+
+/* ==========================================================================
+   完美对齐与升级：采用 inspection lab.png 构图的全屏大图 Banner (Hero Section)
+   ========================================================================== */
+.hero {
+  min-height:90vh;
+  /* 运用渐变遮罩完美融合左侧留白区域与右侧的高精CMM设备实景图 */
+  background: linear-gradient(to right, rgba(17, 26, 66, 0.95) 0%, rgba(17, 26, 66, 0.8) 40%, rgba(17, 26, 66, 0.2) 100%), url('https://i.imgur.com/oJcwpQB.png') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  padding:80px 60px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(39,53,119,.25) 0%,transparent 60%);
+  pointer-events:none;
+}
+/* 原生科技感网格线背景叠加 */
+.hero-grid-bg{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.04;
+  background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-content{position:relative;z-index:1;max-width:720px}
+/* 眉批标签样式 (带左侧高亮浅蓝横线) */
+.hero-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font-display);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#a8c4ff;
+  margin-bottom:24px;
+}
+.hero-eyebrow::before{content:'';width:32px;height:2px;background:#a8c4ff}
+/* 融入素材 H1 标题 */
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(44px,5.5vw,76px);
+  font-weight:700;
+  line-height:.95;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:28px;
+}
+.hero h1 span{color:#a8c4ff;display:block}
+/* 融入素材 Overview 描述 */
+.hero-desc{
+  font-size:17px;
+  font-weight:300;
+  line-height:1.75;
+  color:rgba(255,255,255,.9);
+  max-width:620px;
+  margin-bottom:48px;
+}
+
+/* 双响应式按钮系统 */
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-primary{background:#fff;color:var(--navy);border:2px solid #fff;padding:14px 32px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;display:inline-block}
+.btn-primary:hover{background:var(--navy);color:#fff}
+.btn-secondary{background:transparent;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.4);padding:14px 32px;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;display:inline-block}
+.btn-secondary:hover{border-color:#fff;color:#fff}
+
+/* ==========================================================================
+   设计创新：Capabilities Section 采用轻量化左边缘蓝色悬浮卡片
+   ========================================================================== */
+.section-padding{padding:100px 0}
+.section-title-area{margin-bottom:60px;position:relative}
+.section-title-area h2{font-family:var(--font-display);font-size:38px;font-weight:700;text-transform:uppercase;color:var(--text-primary);letter-spacing:0.02em}
+.section-title-area::after{content:'';display:block;width:50px;height:4px;background:var(--accent);margin-top:15px}
+
+.capabilities-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:30px}
+.capability-card{background:#fff;border:1px solid var(--border);padding:40px 35px;position:relative;transition:all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);border-left:3px solid var(--navy-light)}
+.capability-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(39,53,119,0.08);border-left-color:var(--accent)}
+.capability-card h3{font-family:var(--font-display);font-size:22px;font-weight:600;text-transform:uppercase;color:var(--text-primary);margin-bottom:15px;letter-spacing:0.01em}
+.capability-card p{font-size:15px;color:var(--text-secondary);line-height:1.6}
+
+/* ==========================================================================
+   设计创新：Process & Tech Section 流程流水线与先进检测设备图片组合网格
+   ========================================================================== */
+.process-tech-section{background:var(--section-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.split-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+
+/* 左侧工业进程时间轴 */
+.process-timeline{position:relative;padding-left:35px}
+.process-timeline::before{content:'';position:absolute;left:5px;top:10px;bottom:10px;width:2px;background:var(--border-mid)}
+.timeline-item{position:relative;margin-bottom:40px}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-dot{position:absolute;left:-35px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--section-alt)}
+.timeline-item h4{font-family:var(--font-display);font-size:20px;font-weight:600;text-transform:uppercase;color:var(--text-primary);margin-bottom:10px}
+.timeline-item p{font-size:15px;color:var(--text-secondary)}
+
+/* 右侧核心仪器描述与图片展位 */
+.tech-gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tech-main-desc{grid-column:span 2;background:#fff;padding:30px;border:1px solid var(--border);margin-bottom:10px}
+.tech-main-desc p{font-size:15px;color:var(--text-secondary);margin-bottom:15px}
+.tech-main-desc p:last-child{margin-bottom:0}
+.img-box{position:relative;border:1px solid var(--border);background:#fff;padding:6px;overflow:hidden}
+.img-box img{width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s}
+.img-box:hover img{transform:scale(1.04)}
+.img-caption{font-family:var(--font-display);font-size:14px;font-weight:600;text-transform:uppercase;color:var(--text-primary);margin-top:10px;text-align:center;letter-spacing:0.03em}
+
+/* ==========================================================================
+   设计创新：Applications Section 行业应用模块采用科技感弹性徽章
+   ========================================================================== */
+.app-section{background:#fff;text-align:center}
+.app-section .section-title-area{display:flex;flex-direction:column;align-items:center;margin-bottom:50px}
+.app-section .section-title-area::after{margin-top:15px}
+.app-flex-wrap{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.app-badge{background:var(--section-alt);border:1px solid var(--border);padding:18px 35px;font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.04em;border-radius:2px;transition:all 0.3s}
+.app-badge:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:translateY(-2px)}
+
+/* ==========================================================================
+   设计创新：Our Competence 错落式多色阶核心竞争力暗底卡片
+   ========================================================================== */
+.competence-section{background:var(--navy-deeper);color:#fff}
+.competence-section .section-title-area h2{color:#fff}
+.competence-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:30px}
+.competence-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:40px;position:relative;transition:all 0.3s}
+.competence-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.competence-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.2)}
+.competence-card:hover::before{transform:scaleX(1)}
+.comp-icon{font-size:28px;margin-bottom:20px;display:block}
+.competence-card h3{font-family:var(--font-display);font-size:22px;font-weight:600;text-transform:uppercase;margin-bottom:15px;letter-spacing:0.02em;color:#fff}
+.competence-card p{font-size:14.5px;color:rgba(255,255,255,0.75);line-height:1.6}
+
+/* Footer 样式保持与原页面完全一致 */
+footer{background:var(--navy-deeper);color:#fff;border-top:1px solid rgba(255,255,255,.1);padding:80px 0 30px}
+.footer-inner{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:60px}
+.footer-brand img{height:35px;margin-bottom:20px}
+.footer-brand p{color:var(--text-light);font-size:14px;max-width:280px}
+.footer-col h4{font-family:var(--font-display);font-size:16px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:25px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:12px}
+.footer-col a{color:var(--text-light);font-size:14px;transition:color .3s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:30px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--text-muted)}
+.footer-bottom a:hover{color:#fff}
+
+/* 响应式断点优化 */
+@media(max-width:1024px){
+  .hero{padding:60px 40px;min-height:70vh;background: linear-gradient(to bottom, rgba(17, 26, 66, 0.95) 0%, rgba(17, 26, 66, 0.8) 100%), url('inspection lab.png') center/cover no-repeat;}
+  .split-layout,.capabilities-grid,.competence-grid{grid-template-columns:1fr;gap:40px}
+  .tech-gallery-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .hero{padding:40px 20px}
+  .tech-gallery-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- 通用 Header 同步对齐 -->
+<header>
+  <div class="container header-inner">
+    <div class="logo-area">
+      <a href="#"><img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Capabilities</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#" class="active">Quality Management</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- 完美对齐并替换背景图：采用指定实景构图的全屏大图沉浸式 Banner -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Zero-Defect Quality Assurance</div>
+    <!-- 融入素材 H1 并采用规范的高亮 Span 标签 -->
+    <h1>Advanced Quality<span>Control & Assurance.</span></h1>
+    <!-- 融入素材 Overview 基础大纲描述文案 -->
+    <p class="hero-desc">
+      Ensure consistent product quality and reliability with a robust quality management system covering every stage of production[cite: 2]. At KongDe, quality is integrated into every phase—from raw incoming material to final dispatch, delivering reliable and repeatable results for automotive, connector, and industrial tier-1 applications[cite: 2].
+    </p>
+    <div class="hero-actions">
+      <a href="#capabilities" class="btn-primary">View Capabilities</a>
+      <a href="#process" class="btn-secondary">Explore Process Flow</a>
+    </div>
+  </div>
+</section>
+
+<!-- Capabilities Section -->
+<section id="capabilities" class="container section-padding">
+  <div class="section-title-area">
+    <h2>Our Capabilities</h2>
+  </div>
+  <div class="capabilities-grid">
+    <div class="capability-card">
+      <h3>Incoming Material Inspection</h3>
+      <p>Verify raw material quality and structural integrity before the manufacturing phase begins[cite: 2].</p>
+    </div>
+    <div class="capability-card">
+      <h3>In-Process Inspection</h3>
+      <p>Continuous automated and manual monitoring of production stability at critical manufacturing stages[cite: 2].</p>
+    </div>
+    <div class="capability-card">
+      <h3>Final Inspection</h3>
+      <p>Comprehensive batch verification and final geometric testing before shipment release[cite: 2].</p>
+    </div>
+    <div class="capability-card">
+      <h3>PPAP & FAI Support</h3>
+      <p>Full documentation control, First Article Inspection reporting, and PPAP submissions for tier-1 automotive partners[cite: 2].</p>
+    </div>
+    <div class="capability-card">
+      <h3>Full Traceability</h3>
+      <p>Complete lot tracking across raw steel materials, machine logs, operators, and production parameters[cite: 2].</p>
+    </div>
+    <div class="capability-card">
+      <h3>8D Problem-Solving</h3>
+      <p>Structured, data-driven closed-loop methodology for rapid root cause analysis and corrective action validation[cite: 2].</p>
+    </div>
+  </div>
+</section>
+
+<!-- Process, Technology & Equipment Section -->
+<section id="process" class="process-tech-section section-padding">
+  <div class="container split-layout">
+    
+    <!-- 左侧: Process Flow Timeline -->
+    <div>
+      <div class="section-title-area">
+        <h2>Process Flow</h2>
+      </div>
+      <div class="process-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <h4>Incoming Material</h4>
+          <p>Our quality control process begins with strict incoming inspection to ensure that all materials meet required standards before entering production[cite: 2].</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <h4>In-Process Inspection</h4>
+          <p>During production, in-process inspections are systematically conducted at critical stages to detect and correct deviations early[cite: 2].</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <h4>Structured Problem Solving</h4>
+          <p>When issues arise, our team applies structured problem-solving methods, including root cause analysis and corrective actions, to prevent recurrence[cite: 2].</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右侧: Technology & Equipment Grid -->
+    <div>
+      <div class="section-title-area">
+        <h2>Technology & Advanced Testing</h2>
+      </div>
+      <div class="tech-main-desc">
+        <p>We utilize advanced measurement equipment such as coordinate measuring machines (CMM), optical projectors, and precision gauges to ensure accurate inspection results[cite: 2].</p>
+        <p>Quality data is collected and analyzed digitally to identify real-time trends, process capabilities, and potential production risks, supporting continuous improvement over time[cite: 2].</p>
+      </div>
+      <div class="tech-gallery-grid">
+        <div class="img-box">
+          <img src="projector01.jpg" alt="Optical Projector Measurement System 01"/>
+          <div class="img-caption">projector01.jpg</div>
+        </div>
+        <div class="img-box">
+          <img src="projector02.jpg" alt="Optical Projector Measurement System 02"/>
+          <div class="img-caption">projector02.jpg</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Applications Section -->
+<section class="container section-padding app-section">
+  <div class="section-title-area">
+    <h2>Applications</h2>
+  </div>
+  <div class="app-flex-wrap">
+    <div class="app-badge">Automotive components requiring high reliability[cite: 2]</div>
+    <div class="app-badge">Connector and electronic components[cite: 2]</div>
+    <div class="app-badge">Industrial equipment parts[cite: 2]</div>
+    <div class="app-badge">Precision mechanical components[cite: 2]</div>
+  </div>
+</section>
+
+<!-- Our Competence Section -->
+<section class="competence-section section-padding">
+  <div class="container">
+    <div class="section-title-area">
+      <h2>Our Competence</h2>
+    </div>
+    <div class="competence-grid">
+      <div class="competence-card">
+        <span class="comp-icon">✓</span>
+        <h3>Comprehensive Quality Control</h3>
+        <p>End-to-end quality systems covering all production stages, from raw material validation to final dispatch check[cite: 2].</p>
+      </div>
+      <div class="competence-card">
+        <span class="comp-icon">🌐</span>
+        <h3>Global Quality Standards</h3>
+        <p>Proven familiarity and strict operational compliance with international automotive, aerospace, and high-tech industrial standards[cite: 2].</p>
+      </div>
+      <div class="competence-card">
+        <span class="comp-icon">⚙️</span>
+        <h3>Advanced Testing</h3>
+        <p>Strong inspection and metrology capabilities using modern CMM equipment, digital projectors, and clean testing environments[cite: 2].</p>
+      </div>
+      <div class="competence-card">
+        <span class="comp-icon">⚡</span>
+        <h3>Fast Response</h3>
+        <p>Rapid identification and prompt operational containment of quality issues, ensuring zero downtime for customer lines[cite: 2].</p>
+      </div>
+      <div class="competence-card">
+        <span class="comp-icon">📈</span>
+        <h3>Continuous Improvement</h3>
+        <p>Deep data-driven commitment to enhancing production stability, lowering PPM, and optimizing quality performance over time[cite: 2].</p>
+      </div>
+      <div class="competence-card">
+        <span class="comp-icon">📋</span>
+        <h3>Documentation</h3>
+        <p>Complete product traceability logs, comprehensive material certifications, and transparent quality records readily available[cite: 2].</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 通用 Footer 同步对齐 -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/>
+      <p>Mastering precision toolmaking and advanced injection engineering across demanding sectors worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Capabilities</h4>
+      <ul>
+        <li><a href="#">Tool & Mold Making</a></li>
+        <li><a href="#">Injection Molding</a></li>
+        <li><a href="#">Precision Stamping</a></li>
+        <li><a href="#">Quality Management</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Facility</a></li>
+        <li><a href="#">Quality Assurance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Inquiries & Sales</a></li>
+        <li><a href="#">Technical Support</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>&copy; 2026 KongDe Science & Technology. All Rights Reserved.</p>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+</body>
+</html>

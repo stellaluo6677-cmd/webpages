@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Rapid Prototyping Services | Fast Turnaround Manufacturing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#273577;--navy-dark:#1a2558;--navy-deeper:#111a42;--navy-light:#3244a0;
+  --accent:#3b55c4;--page-bg:#fff;--section-alt:#f4f6fb;--section-mid:#edf0f8;
+  --text-primary:#111827;--text-secondary:#374151;--text-muted:#6b7280;--text-light:#9ca3af;
+  --border:rgba(39,53,119,.12);--border-mid:rgba(39,53,119,.2);
+  --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;
+  --glow-color: rgba(59, 85, 196, 0.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--page-bg);color:var(--text-primary);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;box-shadow:0 1px 12px rgba(39,53,119,.07)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:40px}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;letter-spacing:.04em;text-decoration:none;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-cta{background:var(--navy);color:#fff;border:none;padding:9px 22px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s;cursor:pointer}
+.nav-cta:hover{background:var(--navy-light)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:var(--section-alt);padding:14px 60px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);letter-spacing:.04em;margin-top:68px}
+.breadcrumb a{color:var(--text-muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--navy)}
+.breadcrumb .sep{color:var(--border-mid)}
+.breadcrumb .current{color:var(--navy);font-weight:500}
+
+/* ── HERO (INNOVATIVE GLASSMORPHISM OVERLAY) ── */
+.hero{min-height:92vh;background:linear-gradient(to right, rgba(17,26,66,0.9) 30%, rgba(39,53,119,0.4) 100%),url('https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;display:flex;align-items:center;padding:80px 60px;position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);background-size:50px 50px}
+.hero-container{display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;width:100%;max-width:1400px;margin:0 auto;position:relative;z-index:1}
+.hero-content{max-width:780px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a8c4ff;margin-bottom:24px}
+.hero-eyebrow::before{content:'';width:32px;height:2px;background:#a8c4ff}
+.hero h1{font-family:var(--font-display);font-size:clamp(44px,5.5vw,72px);font-weight:700;line-height:0.98;letter-spacing:-.01em;text-transform:uppercase;color:#fff;margin-bottom:28px}
+.hero h1 span{color:#a8c4ff;display:block;font-size:0.85em}
+.hero-desc{font-size:17px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.85);margin-bottom:48px}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-primary{background:#fff;color:var(--navy);border:2px solid #fff;padding:14px 32px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;display:inline-block}
+.btn-primary:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-secondary{background:transparent;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.4);padding:14px 32px;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;display:inline-block}
+.btn-secondary:hover{border-color:#fff;color:#fff}
+
+/* Hero Glass Panel Card */
+.hero-glass-panel{background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);padding:40px;display:flex;flex-direction:column;justify-content:center;color:#fff;box-shadow:0 20px 50px rgba(0,0,0,0.3)}
+.hero-glass-title{font-family:var(--font-display);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#a8c4ff;margin-bottom:16px}
+.hero-glass-text{font-size:14px;font-weight:300;line-height:1.7;color:rgba(255,255,255,0.85)}
+
+/* ── SECTION BASE ── */
+section{padding:100px 60px}
+.section-eyebrow{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.section-eyebrow::before{content:'';width:24px;height:2px;background:var(--navy)}
+.section-title{font-family:var(--font-display);font-size:clamp(34px,4vw,52px);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.05;color:var(--text-primary);margin-bottom:16px}
+.section-subtitle{font-size:16px;font-weight:300;color:var(--text-muted);line-height:1.7;max-width:640px}
+
+/* ════════════════════════════════════════
+   CAPABILITIES — Asymmetric Dynamic Grid
+   ════════════════════════════════════════ */
+.capabilities{background:var(--page-bg);padding-bottom:100px}
+.cap-header{margin-bottom:64px}
+.cap-asym-grid{display:grid;grid-template-columns:repeat(6, 1fr);gap:24px;margin-top:48px}
+.cap-box{background:var(--section-alt);border:1px solid var(--border);padding:40px 32px;position:relative;transition:all .35s cubic-bezier(0.25, 1, 0.5, 1);display:flex;flex-direction:column;justify-content:space-between}
+.cap-box-w3{grid-column: span 3}
+.cap-box-w2{grid-column: span 2}
+.cap-box::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:transparent;transition:background .3s}
+.cap-box:hover{background:#fff;transform:translateY(-6px);box-shadow:0 15px 35px var(--glow-color);border-color:var(--navy-light)}
+.cap-box:hover::before{background:var(--accent)}
+.cap-box-tag{font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;display:block}
+.cap-box-title{font-family:var(--font-display);font-size:24px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:14px}
+.cap-box-desc{font-size:14px;font-weight:300;color:var(--text-secondary);line-height:1.7;flex-grow:1}
+
+/* ════════════════════════════════════════
+   PROCESS TIMELINE — Engineered CSS Flow
+   ════════════════════════════════════════ */
+.process-section{background:var(--section-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative}
+.timeline-container{margin-top:64px;position:relative;display:flex;justify-content:between;gap:16px;background:#fff;border:1px solid var(--border);padding:48px 32px;box-shadow:0 4px 20px rgba(0,0,0,0.02)}
+.timeline-line{position:absolute;top:90px;left:8%;right:8%;height:2px;background:var(--section-mid);z-index:1}
+.timeline-node{position:relative;z-index:2;flex:1;text-align:center;padding:0 8px}
+.timeline-circle{width:56px;height:56px;background:#fff;border:3px solid var(--section-mid);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px auto;font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--text-light);transition:all .3s ease}
+.timeline-node:hover .timeline-circle{border-color:var(--navy);color:var(--navy);transform:scale(1.1);box-shadow:0 0 0 6px rgba(39,53,119,0.08)}
+.timeline-badge{display:inline-block;background:var(--section-alt);border:1px solid var(--border-mid);color:var(--navy);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;padding:4px 12px;margin-bottom:14px}
+.timeline-title{font-family:var(--font-display);font-size:16px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:10px}
+.timeline-desc{font-size:13px;color:var(--text-muted);line-height:1.6;font-weight:300}
+.timeline-summary{margin-top:48px;background:var(--navy-dark);color:#fff;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;border-left:4px solid var(--accent)}
+.tl-sum-left{display:flex;align-items:center;gap:20px}
+.tl-sum-icon{font-size:28px}
+.tl-sum-text{font-size:14px;font-weight:300;color:rgba(255,255,255,0.8)}
+.tl-sum-days{font-family:var(--font-display);font-size:36px;font-weight:700;color:#a8c4ff;letter-spacing:0.02em}
+
+/* ════════════════════════════════════════
+   COMPETENCE — Premium High-Spec Analytics
+   ════════════════════════════════════════ */
+.competence{background:var(--page-bg)}
+.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.comp-card{background:#fff;border:1px solid var(--border);padding:40px 32px;position:relative;overflow:hidden;transition:all .3s}
+.comp-card::after{content:'';position:absolute;inset:0;background:linear-gradient(45deg, transparent 45%, rgba(39,53,119,0.02) 50%, transparent 55%);transform:translateX(-100%);transition:transform 0.6s ease}
+.comp-card:hover::after{transform:translateX(100%)}
+.comp-card:hover {border-color:var(--navy);box-shadow:0 10px 30px rgba(39,53,119,0.04)}
+.comp-icon-box{font-size:24px;margin-bottom:20px;display:inline-block;width:48px;height:48px;background:var(--section-alt);border-radius:4px;display:flex;align-items:center;justify-content:center}
+.comp-title{font-family:var(--font-display);font-size:18px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.comp-desc{font-size:13px;color:var(--text-secondary);line-height:1.7;font-weight:300}
+
+/* ════════════════════════════════════════
+   APPLICATIONS — Deep Clean Dark Matrix
+   ════════════════════════════════════════ */
+.applications{background:var(--navy-deeper);position:relative;overflow:hidden}
+.apps-header{margin-bottom:64px}
+.apps-header .section-eyebrow{color:#a8c4ff}
+.apps-header .section-eyebrow::before{background:#a8c4ff}
+.apps-header .section-title{color:#fff}
+.apps-header .section-subtitle{color:rgba(255,255,255,.5)}
+.apps-list-wrap{display:grid;grid-template-columns:repeat(2, 1fr);gap:20px}
+.app-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:24px 32px;display:flex;align-items:center;gap:24px;transition:all .3s}
+.app-item:hover{background:rgba(255,255,255,.08);border-color:rgba(168,196,255,.4);transform:translateX(6px)}
+.app-num{font-family:var(--font-display);font-size:20px;font-weight:700;color:#a8c4ff;opacity:0.6}
+.app-text{font-family:var(--font-display);font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:#fff}
+
+/* ════════════════════════════════════════
+   CTA + FORM
+   ════════════════════════════════════════ */
+.cta-section{background:var(--section-mid);padding:100px 60px;border-top:1px solid var(--border)}
+.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.cta-text .section-title{color:var(--text-primary)}
+.cta-text .section-subtitle{max-width:480px;color:var(--text-secondary);margin-bottom:32px}
+.cta-highlights{display:flex;flex-direction:column;gap:16px}
+.cta-highlight{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-secondary);font-weight:500}
+.cta-highlight::before{content:'';width:6px;height:6px;background:var(--navy);flex-shrink:0}
+.cta-form{background:#fff;padding:40px;border:1px solid var(--border);box-shadow:0 12px 36px rgba(39,53,119,.04)}
+.form-title{font-family:var(--font-display);font-size:24px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:8px}
+.form-sub{font-size:13px;color:var(--text-muted);margin-bottom:28px}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.form-row input,.form-row textarea,.form-row select{width:100%;background:var(--section-alt);border:1px solid var(--border-mid);color:var(--text-primary);font-family:var(--font-body);font-size:14px;padding:12px 16px;outline:none;transition:border-color .2s}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:var(--navy);background:#fff}
+.form-row textarea{resize:vertical;min-height:100px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{width:100%;background:var(--navy);color:#fff;border:none;padding:15px;font-family:var(--font-body);font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px}
+.btn-submit:hover{background:var(--navy-light)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deeper);padding:60px 60px 36px;color:#fff}
+.footer-top{display:grid;grid-template-columns:280px 1fr 1fr 1fr;gap:48px;margin-bottom:52px;max-width:1200px;margin:0 auto 40px auto}
+.footer-brand img{height:36px;filter:brightness(1.15);margin-bottom:20px}
+.footer-brand p{font-size:13px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.8}
+.footer-col h4{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-col ul{list-style:none}
+.footer-col ul li+li{margin-top:10px}
+.footer-col ul li a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-col ul li a:hover{color:#a8c4ff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.35);max-width:1200px;margin:0 auto;flex-wrap:wrap;gap:12px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  nav{padding:0 30px}
+  section{padding:80px 30px}
+  .hero-container{grid-template-columns:1fr}
+  .hero-glass-panel{display:none}
+  .cap-asym-grid{grid-template-columns:1fr}
+  .cap-box-w3, .cap-box-w2{grid-column: span 1}
+  .timeline-container{flex-direction:column;gap:32px;padding:32px 20px}
+  .timeline-line{display:none}
+  .comp-grid{grid-template-columns:1fr}
+  .apps-list-wrap{grid-template-columns:1fr}
+  .cta-inner{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .footer-top{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#"><img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/></a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#" class="active">Capabilities</a>
+    <a href="#">Products</a>
+    <a href="#">About Us</a>
+    <a href="#">News</a>
+    <a href="#">Contact</a>
+  </div>
+  <a href="#quote" class="nav-cta">Get a Quote</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="#">Home</a><span class="sep">›</span>
+  <a href="#">Capabilities</a><span class="sep">›</span>
+  <span class="current">Rapid Prototyping & Low-Volume Production</span>
+</div>
+
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Fast Turnaround Manufacturing</div>
+      <h1>Rapid Prototyping &<span>Low-Volume Production.</span></h1>
+      <p class="hero-desc">Accelerate product development with rapid prototyping and fast turnaround manufacturing, enabling quick validation and faster time-to-market.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn-primary">Request Prototype</a>
+        <a href="#capabilities" class="btn-secondary">Explore Solutions</a>
+      </div>
+    </div>
+    <div class="hero-glass-panel">
+      <div class="hero-glass-title">Agile Execution</div>
+      <p class="hero-glass-text">In today’s fast-paced product development environment, the ability to quickly validate designs is critical. KongDe delivers speed, flexibility, and absolute precision.</p>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities" class="capabilities">
+  <div class="cap-header">
+    <div class="section-eyebrow">Our Capabilities</div>
+    <h2 class="section-title">Comprehensive Prototyping Solutions</h2>
+    <p class="section-subtitle">Move from concept to physical parts in a matter of days. Engineering validation optimized closely for ultimate real production conditions.</p>
+  </div>
+
+  <div class="cap-asym-grid">
+    <div class="cap-box cap-box-w3">
+      <div>
+        <span class="cap-box-tag">Machining</span>
+        <h3 class="cap-box-title">CNC Machining</h3>
+        <p class="cap-box-desc">High-speed metal and plastic prototypes executed with precision accuracy. Tailored perfectly for connector parts, critical structural assemblies, and industrial components.</p>
+      </div>
+    </div>
+
+    <div class="cap-box cap-box-w3">
+      <div>
+        <span class="cap-box-tag">Speed</span>
+        <h3 class="cap-box-title">Rapid Prototyping</h3>
+        <p class="cap-box-desc">Strict engineering design constraints require tight tolerances and lightning-fast turnaround times to secure critical testing windows smoothly.</p>
+      </div>
+    </div>
+
+    <div class="cap-box cap-box-w2">
+      <div>
+        <span class="cap-box-tag">Production</span>
+        <h3 class="cap-box-title">Low-Volume Production</h3>
+        <p class="cap-box-desc">Pilot runs and functional engineering iterations managed comprehensively before final commitment to full-scale mass manufacturing systems.</p>
+      </div>
+    </div>
+
+    <div class="cap-box cap-box-w2">
+      <div>
+        <span class="cap-box-tag">Materiality</span>
+        <h3 class="cap-box-title">Multi-Material Support</h3>
+        <p class="cap-box-desc">Extensive direct manufacturing versatility covering premium aluminum grades, rigid stainless steels, and complex advanced engineering plastics.</p>
+      </div>
+    </div>
+
+    <div class="cap-box cap-box-w2">
+      <div>
+        <span class="cap-box-tag">Scalability</span>
+        <h3 class="cap-box-title">Bridge Production</h3>
+        <p class="cap-box-desc">Small batch provisions to fulfill strategic early-market launch demands smoothly while hard production automation tooling lines are built.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="section-eyebrow">Process & Technology</div>
+  <h2 class="section-title">Engineered Prototyping Timeline</h2>
+  <p class="section-subtitle">Efficient internal coordination ensuring your structural file specifications match real production metrics reliably.</p>
+
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+    
+    <div class="timeline-node">
+      <div class="timeline-circle">01</div>
+      <span class="timeline-badge">1-2 Days</span>
+      <h4 class="timeline-title">Design Review</h4>
+      <p class="timeline-desc">Quick technical review of drawings and specifications to optimize machining strategy and ensure feasibility.</p>
+    </div>
+
+    <div class="timeline-node">
+      <div class="timeline-circle">02</div>
+      <span class="timeline-badge">1 Day</span>
+      <h4 class="timeline-title">Machining Setup</h4>
+      <p class="timeline-desc">Preparing precise multi-axis cutting parameters, program pathways, and optimized fixtures for reliable execution.</p>
+    </div>
+
+    <div class="timeline-node">
+      <div class="timeline-circle">03</div>
+      <span class="timeline-badge">2-4 Days</span>
+      <h4 class="timeline-title">Production</h4>
+      <p class="timeline-desc">High-speed advanced machining centers executing part features with speed, agility, and consistency.</p>
+    </div>
+
+    <div class="timeline-node">
+      <div class="timeline-circle">04</div>
+      <span class="timeline-badge">1 Day</span>
+      <h4 class="timeline-title">Quality Check</h4>
+      <p class="timeline-desc">Stringent verification checkpoints performed thoroughly to ensure strict dimensional accuracy and optimal surface quality.</p>
+    </div>
+
+    <div class="timeline-node">
+      <div class="timeline-circle">05</div>
+      <span class="timeline-badge">Same Day</span>
+      <h4 class="timeline-title">Delivery</h4>
+      <p class="timeline-desc">Instant shipping dispatch operations handling secure transport packaging across corporate global clients.</p>
+    </div>
+  </div>
+
+  <div class="timeline-summary">
+    <div class="tl-sum-left">
+      <span class="tl-sum-icon">⚡</span>
+      <div class="tl-sum-text">
+        <strong>Fast Turnaround Promise:</strong> Flexible scheduling and highly responsive production planning allows smooth scaled transitions.
+      </div>
+    </div>
+    <div class="tl-sum-days">3–7 Working Days</div>
+  </div>
+</section>
+
+<section class="competence">
+  <div class="section-eyebrow">Our Competence</div>
+  <h2 class="section-title">Why Partner with KongDe</h2>
+  <p class="section-subtitle">Proven expertise in rapid prototyping and high-tolerance precision contract manufacturing lines.</p>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-icon-box">🎯</div>
+      <h3 class="comp-title">High Precision</h3>
+      <p class="comp-desc">Consistent high manufacturing quality delivering components with tight tolerances reaching down to ±0.003mm.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon-box">🔧</div>
+      <h3 class="comp-title">Complex Parts</h3>
+      <p class="comp-desc">Deep engineering experience dealing successfully with complex geometries and tight-tolerance micro components.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon-box">🏭</div>
+      <h3 class="comp-title">Production-Oriented</h3>
+      <p class="comp-desc">Prototyping approaches that closely mirror target mass production environments for reliable concept validation.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon-box">📈</div>
+      <h3 class="comp-title">Smooth Scale-Up</h3>
+      <p class="comp-desc">Seamless transitional scaling engineering that carries concepts comfortably from prototypes to hard-tool mass volumes.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon-box">🧪</div>
+      <h3 class="comp-title">Material Expertise</h3>
+      <p class="comp-desc">Extensive proficiency working with alloys, tool steels, standard plastics, and high-performance technical polymers.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon-box">🛡️</div>
+      <h3 class="comp-title">Quality Assurance</h3>
+      <p class="comp-desc">Comprehensive internal testing standards ensuring physical execution metrics conform directly to your blueprinted CAD parameters.</p>
+    </div>
+  </div>
+</section>
+
+<section class="applications">
+  <div class="apps-header">
+    <div class="section-eyebrow">Applications</div>
+    <h2 class="section-title">Serving Diverse Product Development Needs</h2>
+    <p class="section-subtitle">Providing structural engineering optimization across high-performance product life cycles worldwide.</p>
+  </div>
+
+  <div class="apps-list-wrap">
+    <div class="app-item">
+      <div class="app-num">01</div>
+      <div class="app-text">New product development and concept validation</div>
+    </div>
+    <div class="app-item">
+      <div class="app-num">02</div>
+      <div class="app-text">Engineering and design validation</div>
+    </div>
+    <div class="app-item">
+      <div class="app-num">03</div>
+      <div class="app-text">Functional and performance testing</div>
+    </div>
+    <div class="app-item">
+      <div class="app-num">04</div>
+      <div class="app-text">Market testing and pilot production</div>
+    </div>
+    <div class="app-item">
+      <div class="app-num">05</div>
+      <div class="app-text">Pre-production verification and optimization</div>
+    </div>
+    <div class="app-item">
+      <div class="app-num">06</div>
+      <div class="app-text">Bridge production before mass manufacturing</div>
+    </div>
+  </div>
+</section>
+
+<section id="quote" class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <div class="section-eyebrow">Start Prototyping</div>
+      <h2 class="section-title">Accelerate Your Design Validation</h2>
+      <p class="section-subtitle">Submit your STEP/IGS files today to obtain an exhaustive manufacturing assessment and commercial quotation from our engineering group within 24 hours.</p>
+      <div class="cta-highlights">
+        <div class="cta-highlight">Strict tolerances up to ±0.003mm supported</div>
+        <div class="cta-highlight">Fast physical delivery in 3-7 working days</div>
+        <div class="cta-highlight">Full raw multi-material flexibility options</div>
+      </div>
+    </div>
+
+    <div class="cta-form">
+      <h3 class="form-title">Request a Prototyping Quote</h3>
+      <p class="form-sub">Upload details below for real production condition evaluations.</p>
+      <form action="#" method="POST">
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Your Name *</label>
+            <input type="text" placeholder="Jane Doe" required />
+          </div>
+          <div class="form-row">
+            <label>Email Address *</label>
+            <input type="email" placeholder="jane@company.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Primary Material Required</label>
+          <select>
+            <option>Aluminum Alloys</option>
+            <option>Stainless Steel / Metals</option>
+            <option>Engineering Plastics</option>
+            <option>Multi-Material Assembly</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Project Overview / Critical Tolerances</label>
+          <textarea placeholder="Describe dimensions, functional testing criteria, or tight critical tolerance parameters..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit RFQ Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/>
+      <p>Mastering precision toolmaking and advanced injection engineering across demanding sectors worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Capabilities</h4>
+      <ul>
+        <li><a href="#">Tool & Mold Making</a></li>
+        <li><a href="#">Injection Molding</a></li>
+        <li><a href="#">Precision Stamping</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Facility</a></li>
+        <li><a href="#">Quality Assurance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Inquiries & Sales</a></li>
+        <li><a href="#">Technical Support</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 KongDe Science & Technology. All Rights Reserved.</p>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+</body>
+</html>

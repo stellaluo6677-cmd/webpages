@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Industrial Automation | KongDe Science & Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#273577;--navy-dark:#1a2558;--navy-deeper:#111a42;--navy-light:#3244a0;
+  --accent:#3b55c4;--page-bg:#fff;--section-alt:#f4f6fb;--section-mid:#edf0f8;
+  --text-primary:#111827;--text-secondary:#374151;--text-muted:#6b7280;--text-light:#9ca3af;
+  --border:rgba(39,53,119,.12);--border-mid:rgba(39,53,119,.2);
+  --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;
+  --glow-blue: rgba(59, 85, 196, 0.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--page-bg);color:var(--text-primary);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;box-shadow:0 1px 12px rgba(39,53,119,.07)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:40px}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;letter-spacing:.04em;text-decoration:none;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-cta{background:var(--navy);color:#fff;border:none;padding:9px 22px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s;cursor:pointer}
+.nav-cta:hover{background:var(--navy-light)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:var(--section-alt);padding:14px 60px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);letter-spacing:.04em;margin-top:68px}
+.breadcrumb a{color:var(--text-muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--navy)}
+.breadcrumb .sep{color:var(--border-mid)}
+.breadcrumb .current{color:var(--navy);font-weight:500}
+
+/* ── HERO ── */
+.hero{min-height:85vh;background:linear-gradient(to bottom,rgba(17,26,66,.75) 0%,rgba(17,26,66,.85) 55%,rgba(39,53,119,.98) 100%),url('https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;display:flex;align-items:center;padding:80px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(39,53,119,.3) 0%,transparent 60%);pointer-events:none}
+.hero-grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);background-size:50px 50px}
+.hero-content{position:relative;z-index:1;max-width:850px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a8c4ff;margin-bottom:24px}
+.hero-eyebrow::before{content:'';width:32px;height:2px;background:#a8c4ff}
+.hero h1{font-family:var(--font-display);font-size:clamp(44px,5.5vw,76px);font-weight:700;line-height:.95;letter-spacing:-.01em;text-transform:uppercase;color:#fff;margin-bottom:28px}
+.hero h1 span{color:#a8c4ff;display:block}
+.hero-desc{font-size:17px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.85);max-width:650px;margin-bottom:48px}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-primary{background:#fff;color:var(--navy);border:2px solid #fff;padding:14px 32px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;display:inline-block}
+.btn-primary:hover{background:var(--navy);color:#fff}
+.btn-secondary{background:transparent;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.4);padding:14px 32px;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;display:inline-block}
+.btn-secondary:hover{border-color:#fff;color:#fff}
+
+/* ── SECTION BASE ── */
+section{padding:100px 60px}
+.section-eyebrow{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.section-eyebrow::before{content:'';width:24px;height:2px;background:var(--navy)}
+.section-title{font-family:var(--font-display);font-size:clamp(34px,4vw,52px);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.05;color:var(--text-primary);margin-bottom:16px}
+.section-subtitle{font-size:16px;font-weight:300;color:var(--text-muted);line-height:1.7;max-width:680px}
+
+/* ════════════════════════════════════════
+   INTRODUCTION - Split Layout
+   ════════════════════════════════════════ */
+.intro-section{background:var(--section-alt);border-bottom:1px solid var(--border)}
+.intro-container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.intro-content p{font-size:15px;line-height:1.8;color:var(--text-secondary);font-weight:300;margin-bottom:20px}
+.intro-content p:last-child{margin-bottom:0}
+.intro-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.stat-box{background:#fff;border:1px solid var(--border);padding:32px;box-shadow:0 4px 20px rgba(39,53,119,.02);position:relative}
+.stat-box::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--border-mid)}
+.stat-box:hover::after{background:var(--accent)}
+.stat-title{font-family:var(--font-display);font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.stat-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;font-weight:300}
+
+/* ════════════════════════════════════════
+   CAPABILITIES - Innovated Tech Grid
+   ════════════════════════════════════════ */
+.capabilities{background:var(--page-bg)}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:52px}
+.cap-card-tech{background:#fff;border:1px solid var(--border);padding:44px 36px;position:relative;transition:all .4s cubic-bezier(0.16, 1, 0.3, 1);display:flex;flex-direction:column}
+.cap-card-tech::before{content:'';position:absolute;inset:0;border:1px solid transparent;transition:all .4s;pointer-events:none}
+.cap-card-tech:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(39,53,119,.08);border-color:transparent}
+.cap-card-tech:hover::before{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.cap-icon-tech{width:52px;height:52px;background:var(--section-alt);color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:28px;transition:all .3s}
+.cap-card-tech:hover .cap-icon-tech{background:var(--navy);color:#fff}
+.cap-title-tech{font-family:var(--font-display);font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--text-primary);margin-bottom:16px}
+.cap-desc-tech{font-size:14px;font-weight:300;color:var(--text-secondary);line-height:1.75}
+
+/* ════════════════════════════════════════
+   SOLUTION FLOW - Process Layout (From Image)
+   ════════════════════════════════════════ */
+.flow-section{background:var(--section-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow-x:auto}
+.flow-container{display:flex;align-items:stretch;gap:16px;margin-top:56px;min-width:1100px;padding-bottom:20px}
+.flow-step{background:#fff;border:1px solid var(--border);border-radius:6px;padding:36px 24px;flex:1;position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.02)}
+.flow-arrow{display:flex;align-items:center;color:var(--accent);font-size:20px;font-weight:300;user-select:none;padding:0 4px}
+.flow-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:28px;height:28px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.flow-icon-wrap{width:64px;height:64px;border-radius:50%;background:var(--section-alt);border:1px solid var(--border-mid);display:flex;align-items:center;justify-content:center;margin-bottom:24px;color:var(--navy)}
+.flow-icon-wrap svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.5}
+.flow-name{font-family:var(--font-display);font-size:18px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:12px;min-height:44px;display:flex;align-items:center}
+.flow-text{font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.6}
+/* Highlighting final optimized node like image */
+.flow-step.optimized{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 12px 32px var(--glow-blue)}
+.flow-step.optimized .flow-badge{background:#fff;color:var(--accent)}
+.flow-step.optimized .flow-icon-wrap{background:rgba(255,255,255,0.15);border-color:transparent;color:#fff}
+.flow-step.optimized .flow-name{color:#fff}
+.flow-step.optimized .flow-text{color:rgba(255,255,255,0.85);font-weight:400}
+
+/* ════════════════════════════════════════
+   APPLICATION SCENARIOS - Dark Contrast Blocks
+   ════════════════════════════════════════ */
+.scenarios{background:var(--navy-dark);color:#fff}
+.scenarios .section-eyebrow{color:#a8c4ff}
+.scenarios .section-eyebrow::before{background:#a8c4ff}
+.scenarios .section-title{color:#fff}
+.scenarios .section-subtitle{color:rgba(255,255,255,0.6)}
+.sce-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:56px}
+.sce-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:40px;display:flex;gap:28px;align-items:flex-start;transition:all .3s}
+.sce-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);transform:translateX(6px)}
+.sce-num{font-family:var(--font-display);font-size:32px;font-weight:700;color:#a8c4ff;line-height:1;opacity:0.8}
+.sce-title{font-family:var(--font-display);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-bottom:12px}
+.sce-desc{font-size:14px;font-weight:300;color:rgba(255,255,255,0.65);line-height:1.7}
+
+/* ════════════════════════════════════════
+   CTA + FORM
+   ════════════════════════════════════════ */
+.cta-section{background:var(--section-mid);padding:100px 60px;position:relative;overflow:hidden;border-top:1px solid var(--border)}
+.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.cta-text .section-title{color:var(--text-primary)}
+.cta-text .section-subtitle{max-width:480px;color:var(--text-secondary);margin-bottom:32px}
+.cta-highlights{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+.cta-highlight{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-secondary);font-weight:500}
+.cta-highlight::before{content:'';width:6px;height:6px;background:var(--navy);flex-shrink:0}
+.cta-form{background:#fff;padding:40px;border:1px solid var(--border);box-shadow:0 12px 36px rgba(39,53,119,.04)}
+.form-title{font-family:var(--font-display);font-size:24px;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:8px}
+.form-sub{font-size:13px;color:var(--text-muted);margin-bottom:28px}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.form-row input,.form-row textarea,.form-row select{width:100%;background:var(--section-alt);border:1px solid var(--border-mid);color:var(--text-primary);font-family:var(--font-body);font-size:14px;padding:12px 16px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:var(--navy);background:#fff}
+.form-row textarea{resize:vertical;min-height:100px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{width:100%;background:var(--navy);color:#fff;border:none;padding:15px;font-family:var(--font-body);font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px}
+.btn-submit:hover{background:var(--navy-light)}
+
+/* ── FOOTER ── */
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/>
+      <p>Mastering precision toolmaking and advanced automation engineering across demanding sectors worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Capabilities</h4>
+      <ul>
+        <li><a href="#">Tool & Mold Making</a></li>
+        <li><a href="#">Injection Molding</a></li>
+        <li><a href="#">Industrial Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Facility</a></li>
+        <li><a href="#">Quality Assurance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Inquiries & Sales</a></li>
+        <li><a href="#">Technical Support</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 KongDe Science & Technology. All Rights Reserved.</p>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  nav{padding:0 30px}
+  section{padding:80px 30px}
+  .intro-container{grid-template-columns:1fr;gap:40px}
+  .cap-grid{grid-template-columns:1fr 1fr}
+  .sce-grid{grid-template-columns:1fr}
+  .cta-inner{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .cap-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#"><img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/></a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#" class="active">Capabilities</a>
+    <a href="#">Products</a>
+    <a href="#">About Us</a>
+    <a href="#">News</a>
+    <a href="#">Contact</a>
+  </div>
+  <a href="#quote" class="nav-cta">Get a Quote</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="#">Home</a><span class="sep">›</span>
+  <a href="#">Capabilities</a><span class="sep">›</span>
+  <span class="current">Industrial Automation</span>
+</div>
+
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Intelligent Process Integration</div>
+    <h1>INDUSTRIAL AUTOMATION<span>SMART MANUFACTURING.</span></h1>
+    <p class="hero-desc">Transforming modern manufacturing through advanced robotics, intelligent motion control, and data-driven process integration designed for scale and absolute consistency.</p>
+    <div class="hero-actions">
+      <a href="#quote" class="btn-primary">Request Consultation</a>
+      <a href="#capabilities" class="btn-secondary">View Capabilities</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro-section">
+  <div class="intro-container">
+    <div class="intro-content">
+      <div class="section-eyebrow">Operational Efficiency</div>
+      <h2 class="section-title">Optimizing Production with Advanced Automation</h2>
+      <p>At KongDe, we specialize in the design and implementation of tailored industrial automation solutions that enhance productivity and streamline manufacturing processes.</p>
+      <p>Our approach is built on a clear understanding of real production challenges—balancing efficiency, precision, flexibility, and cost control to help manufacturers transition to data-driven production environments.</p>
+    </div>
+    <div class="intro-stats">
+      <div class="stat-box">
+        <div class="stat-title">Higher Speed</div>
+        <p class="stat-desc">Accelerate cycle times significantly while maintaining continuous operational stability.</p>
+      </div>
+      <div class="stat-box">
+        <div class="stat-title">Greater Accuracy</div>
+        <p class="stat-desc">Minimize human variability to hit demanding technical tolerances repeatedly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow-section">
+  <div class="section-eyebrow">Workflow Architecture</div>
+  <h2 class="section-title">Our Automation Solution Flow</h2>
+  <p class="section-subtitle">We implement automation solutions for mass production assembly, material handling, online CCD inspection, and packaging applications, precisely configured to meet your operational requirements.</p>
+
+  <div class="flow-container">
+    <div class="flow-step">
+      <span class="flow-badge">1</span>
+      <div class="flow-icon-wrap">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+      </div>
+      <h3 class="flow-name">Requirements Analysis</h3>
+      <p class="flow-text">Understand your operational requirements and production goals.</p>
+    </div>
+    
+    <div class="flow-arrow">→</div>
+
+    <div class="flow-step">
+      <span class="flow-badge">2</span>
+      <div class="flow-icon-wrap">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+      </div>
+      <h3 class="flow-name">Solution Design</h3>
+      <p class="flow-text">Customized automation solution design to fit your specific needs.</p>
+    </div>
+
+    <div class="flow-arrow">→</div>
+
+    <div class="flow-step">
+      <span class="flow-badge">3</span>
+      <div class="flow-icon-wrap">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+      </div>
+      <h3 class="flow-name">Mass Production Assembly</h3>
+      <p class="flow-text">Automated assembly systems for efficient, high-quality production.</p>
+    </div>
+
+    <div class="flow-arrow">→</div>
+
+    <div class="flow-step">
+      <span class="flow-badge">4</span>
+      <div class="flow-icon-wrap">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <h3 class="flow-name">Material Handling</h3>
+      <p class="flow-text">Automated material handling and transfer for smooth production flow.</p>
+    </div>
+
+    <div class="flow-arrow">→</div>
+
+    <div class="flow-step">
+      <span class="flow-badge">5</span>
+      <div class="flow-icon-wrap">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+      </div>
+      <h3 class="flow-name">Online CCD Inspection</h3>
+      <p class="flow-text">Online CCD inspection for real-time quality monitoring and defect detection.</p>
+    </div>
+
+    <div class="flow-arrow">→</div>
+
+    <div class="flow-step">
+      <span class="flow-badge">6</span>
+      <div class="flow-icon-wrap">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+      </div>
+      <h3 class="flow-name">Packaging Applications</h3>
+      <p class="flow-text">Automated packaging solutions for efficient and consistent product output.</p>
+    </div>
+
+    <div class="flow-arrow">→</div>
+
+    <div class="flow-step optimized">
+      <span class="flow-badge">✓</span>
+      <div class="flow-icon-wrap">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10a2 2 0 01-2 2h-2a2 2 0 01-2-2zm9 0v-3a2 2 0 00-2-2h-2a2 2 0 00-2 2v3a2 2 0 002 2h2a2 2 0 002-2zM12 3a1 1 0 00-1-1h-.01a1 1 0 00-1 1v1h2V3zm4 2a1 1 0 00-1-1h-.01a1 1 0 00-1 1v2h2V5z"/></svg>
+      </div>
+      <h3 class="flow-name">Optimized Production</h3>
+      <p class="flow-text">Higher efficiency, consistent quality, and reduced operational costs.</p>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities" class="capabilities">
+  <div class="cap-header">
+    <div class="section-eyebrow">Core Expertise</div>
+    <h2 class="section-title">Comprehensive Automation Capabilities</h2>
+    <p class="section-subtitle">Our systems are custom engineered from concept development to deployment, ensuring exceptional long-term reliability and system scalability.</p>
+  </div>
+
+  <div class="cap-grid">
+    <div class="cap-card-tech">
+      <div class="cap-icon-tech">AS</div>
+      <h3 class="cap-title-tech">Automated Assembly Systems</h3>
+      <p class="cap-desc-tech">Engineered to minimize human intervention and variability, our high-volume assembly solutions stabilize throughput and safeguard repeatable manufacturing quality.</p>
+    </div>
+
+    <div class="cap-card-tech">
+      <div class="cap-icon-tech">RB</div>
+      <h3 class="cap-title-tech">Robotics Integration</h3>
+      <p class="cap-desc-tech">Incorporating advanced articulated or SCARA robotics for precision tasks. Multi-axis integration dramatically compresses cycle times in complex pick-and-place paths.</p>
+    </div>
+
+    <div class="cap-card-tech">
+      <div class="cap-icon-tech">MV</div>
+      <h3 class="cap-title-tech">Machine Vision & Inspection</h3>
+      <p class="cap-desc-tech">Leveraging high-resolution smart camera matrix imaging and real-time smart algorithms to filter anomalies and enforce rigid quality tracking standard lines.</p>
+    </div>
+
+    <div class="cap-card-tech">
+      <div class="cap-icon-tech">MH</div>
+      <h3 class="cap-title-tech">Material Handling Automation</h3>
+      <p class="cap-desc-tech">Optimizing the internal component routing, continuous alignment matrix, and buffer mechanics to completely strip operational workflow bottlenecks.</p>
+    </div>
+
+    <div class="cap-card-tech">
+      <div class="cap-icon-tech">QA</div>
+      <h3 class="cap-title-tech">Inline CCD QA Monitoring</h3>
+      <p class="cap-desc-tech">Embedding inspection mechanics immediately inside production streams, empowering total traceability without imposing manufacturing speed trade-offs.</p>
+    </div>
+
+    <div class="cap-card-tech">
+      <div class="cap-icon-tech">PK</div>
+      <h3 class="cap-title-tech">Automated Packaging Systems</h3>
+      <p class="cap-desc-tech">End-of-line precise mechanical packaging systems configured to streamline logistics preparation while scaling back labor allocation costs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scenarios">
+  <div class="section-eyebrow">Target Configuration</div>
+  <h2 class="section-title">Tailored For Your Production Needs</h2>
+  <p class="section-subtitle">We deploy custom automation systems cross-engineered for specific manufacturing applications, ensuring future-proof operations.</p>
+
+  <div class="sce-grid">
+    <div class="sce-card">
+      <div class="sce-num">01</div>
+      <div>
+        <h3 class="sce-title">Mass Production Assembly</h3>
+        <p class="sce-desc">Ideal for high-volume sectors requiring strict repetition accuracy, uniform quality control metrics, and relentless shift run capacity.</p>
+      </div>
+    </div>
+    <div class="sce-card">
+      <div class="sce-num">02</div>
+      <div>
+        <h3 class="sce-title">Adaptive Process Upgrades</h3>
+        <p class="sce-desc">Configured with modular flexible architectures allowing future expansions, part revisions, and seamless product changeovers over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quote" class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <div class="section-eyebrow">Start Your Project</div>
+      <h2 class="section-title">Accelerate Your Manufacturing Timeline</h2>
+      <p class="section-subtitle">Submit your technical dimensional blueprints or DFM parameters today to get a comprehensive tooling engineering evaluation from our master engineers within 24 hours.</p>
+      <div class="cta-highlights">
+        <div class="cta-highlight">Full multi-axis simulation evaluation reports</div>
+        <div class="cta-highlight">Certified global standard premium tool steels</div>
+        <div class="cta-highlight">24-hour rapid quoting turnaround support</div>
+      </div>
+    </div>
+
+    <div class="cta-form">
+      <h3 class="form-title">Request an Automation Quote</h3>
+      <p class="form-sub">Fill out the required specifications below for a prompt response.</p>
+      <form action="#" method="POST">
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Your Name *</label>
+            <input type="text" placeholder="John Doe" required />
+          </div>
+          <div class="form-row">
+            <label>Email Address *</label>
+            <input type="email" placeholder="john@company.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Automation Focus Area</label>
+          <select>
+            <option>Automated Assembly Systems</option>
+            <option>Robotics Integration Setup</option>
+            <option>Machine Vision / CCD Inspection</option>
+            <option>Complete Production Line Upgrade</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Project Scope / Target Volume</label>
+          <textarea placeholder="Describe existing challenges, cycle time goals, production volumes, and automation objectives..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit RFQ Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://ecdn6.globalso.com/upload/p/6469/image_other/2026-04/logo1.png" alt="KongDe"/>
+      <p>Mastering precision toolmaking and advanced injection engineering across demanding sectors worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Capabilities</h4>
+      <ul>
+        <li><a href="#">Tool & Mold Making</a></li>
+        <li><a href="#">Injection Molding</a></li>
+        <li><a href="#">Industrial Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Facility</a></li>
+        <li><a href="#">Quality Assurance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Inquiries & Sales</a></li>
+        <li><a href="#">Technical Support</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 KongDe Science & Technology. All Rights Reserved.</p>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services | KongDe Science & Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #273577;
+    --navy-dark: #1a2558;
+    --page-bg: #f4f6fb;
+    --card-bg: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #374151;
+  }
+  body {
+    font-family: 'Barlow', sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container {
+    max-width: 1000px;
+    width: 100%;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--navy-dark);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  p.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  .service-card {
+    background: var(--card-bg);
+    border-left: 5px solid var(--navy);
+    padding: 25px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(39, 53, 119, 0.06);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px rgba(39, 53, 119, 0.12);
+    background: #fafbfe;
+  }
+  .service-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin: 0 0 10px 0;
+    font-weight: 700;
+  }
+  .service-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+  }
+  .arrow-link {
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  .arrow-link::after {
+    content: " →";
+    transition: transform 0.2s;
+  }
+  .service-card:hover .arrow-link::after {
+    transform: translateX(5px);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Our Manufacturing Services</h1>
+    <p class="subtitle">Select a capabilities page below to view complete details and specifications.</p>
+  </header>
+
+  <div class="services-grid">
+    <a href="01%20kongde-cnc-machining.html" class="service-card" target="_blank">
+      <div>
+        <div class="service-title">CNC Machining</div>
+        <p class="service-desc">High-precision milling and turning engineering built for critical tolerances and complex components.</p>
+      </div>
+      <span class="arrow-link">View Details</span>
+    </a>
+
+    <a href="03%20kongde-injection-molding%20(1).html" class="service-card" target="_blank">
+      <div>
+        <div class="service-title">Injection Molding</div>
+        <p class="service-desc">Advanced plastic molding solutions utilizing premium materials for high-volume production excellence.</p>
+      </div>
+      <span class="arrow-link">View Details</span>
+    </a>
+
+    <a href="04%20Tool_and_Mold_Making_Page02.html" class="service-card" target="_blank">
+      <div>
+        <div class="service-title">Tool & Mold Making</div>
+        <p class="service-desc">Custom precision tooling, mold bases, and robust engineering architecture for global manufacturing.</p>
+      </div>
+      <span class="arrow-link">View Details</span>
+    </a>
+
+    <a href="05%20Component%20Assembly.html" class="service-card" target="_blank">
+      <div>
+        <div class="service-title">Component Assembly</div>
+        <p class="service-desc">Seamless parts integration, manual and semi-automated secondary operations, and full end-of-line checking.</p>
+      </div>
+      <span class="arrow-link">View Details</span>
+    </a>
+
+    <a href="06%20Industrial%20automation.html" class="service-card" target="_blank">
+      <div>
+        <div class="service-title">Industrial Automation</div>
+        <p class="service-desc">Custom-designed equipment, optimized process layout, robotic line integration, and operational efficiency.</p>
+      </div>
+      <span class="arrow-link">View Details</span>
+    </a>
+
+    <a href="07%20product%20design%20-%20DFM%20support.html" class="service-card" target="_blank">
+      <div>
+        <div class="service-title">Product Design & DFM Support</div>
+        <p class="service-desc">Comprehensive Design for Manufacturing analysis, structural optimization, and cost-efficiency consulting.</p>
+      </div>
+      <span class="arrow-link">View Details</span>
+    </a>
+
+    <a href="08%20prototyping-%20rapid%20manufacturing.html" class="service-card" target="_blank">
+      <div>
+        <div class="service-title">Rapid Prototyping</div>
+        <p class="service-desc">Fast-turnaround functional prototypes and bridge production to validate engineering intent prior to hard tooling.</p>
+      </div>
+      <span class="arrow-link">View Details</span>
+    </a>
+
+    <a href="09%20Quality%20Management.html" class="service-card" target="_blank">
+      <div>
+        <div class="service-title">Quality Management System</div>
+        <p class="service-desc">Strict quality assurance protocols, advanced inspection equipment, full traceability, and ISO standard compliance.</p>
+      </div>
+      <span class="arrow-link">View Details</span>
+    </a>
+
+    <a href="10%20supply%20chain%20-%20turnkey%20solutions.html" class="service-card" target="_blank">
+      <div>
+        <div class="service-title">Turnkey Supply Chain Solutions</div>
+        <p class="service-desc">One-stop management from raw material procurement to global logistics and container network deployment.</p>
+      </div>
+      <span class="arrow-link">View Details</span>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -38,7 +38,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .breadcrumb .current{color:var(--navy);font-weight:500}
 
 /* ── HERO (INNOVATIVE SPLIT PANEL) ── */
-.hero-split{min-height:85vh;background:linear-gradient(135deg, var(--navy-deeper) 0%, var(--navy) 100%);padding:80px 60px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
+.hero-split{min-height:85vh;
+  /* 图片+深色渐变遮罩 */
+  background: linear-gradient(rgba(12, 20, 50, 0.85), rgba(12, 20, 50, 0.85)), url("hero-main.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding:80px 60px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:60px;
+  align-items:center}
 .hero-grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.04;background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);background-size:50px 50px}
 .hero-content{position:relative;z-index:1}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a8c4ff;margin-bottom:24px}
